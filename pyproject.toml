@@ -1,0 +1,92 @@
+[project]
+name = "wan2-frontend"
+version = "0.1.0"
+description = "Wan2.2 Streamlit Frontend"
+readme = "README.md"
+requires-python = ">=3.10,<4.0"
+dependencies = [
+    # Frontend
+    "python-dotenv>=1.0.0",
+    "streamlit>=1.41.0",
+
+    # Wan2.2 core dependencies
+    "torch>=2.4.0",
+    "torchvision>=0.19.0",
+    "torchaudio",
+    "opencv-python>=4.9.0.80",
+    "diffusers>=0.31.0",
+    "transformers>=4.49.0,<=4.51.3",
+    "tokenizers>=0.20.3",
+    "accelerate>=1.1.1",
+    "tqdm",
+    "imageio[ffmpeg]",
+    "imageio-ffmpeg",
+    "easydict",
+    "ftfy",
+    "dashscope",
+    "numpy>=1.23.5,<2",
+
+    # Wan2.2 Animate dependencies
+    "decord",
+    "peft",
+    "onnxruntime",
+    "pandas",
+    "matplotlib",
+    "loguru",
+    "sentencepiece",
+
+    # Wan2.2 S2V (speech-to-video) dependencies
+    "openai-whisper",
+    "HyperPyYAML",
+    "inflect",
+    "wetext",
+    "omegaconf",
+    "conformer",
+    "hydra-core",
+    "lightning",
+    "rich",
+    "gdown",
+    "wget",
+    "pyarrow",
+    "pyworld",
+    "librosa",
+    "modelscope",
+    "GitPython",
+
+    # OpenAI prompt expander (for our modifications)
+    "requests",
+
+    # Dev tools
+    "pytest",
+    "black",
+    "flake8",
+    "isort",
+    "mypy",
+    "huggingface-hub[cli]",
+]
+
+# flash_attn requires CUDA and special build - install separately:
+#   pip install flash-attn --no-build-isolation
+# SAM-2 requires git install:
+#   pip install git+https://github.com/facebookresearch/sam2.git@0e78a118995e66bb27d78518c4bd9a3e95b4e266
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = ["app"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["wan_overrides*"]
+
+[tool.black]
+line-length = 88
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+strict = false
+ignore_missing_imports = true
