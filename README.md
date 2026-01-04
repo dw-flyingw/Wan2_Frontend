@@ -3,16 +3,29 @@
 Streamlit frontend for Wan2.2 Animate pipeline. Allows uploading source video, reference image, and audio to generate animated videos.
 
 ## Prerequisites
+# https://github.com/Wan-Video/Wan2.2
 
 1. Clone Wan2.2 repo (clean, unmodified):
 ```bash
 gh repo clone Wan-Video/Wan2.2 ../Wan2.2
 ```
 
+T2V-A14B	Text-to-Video MoE model, supports 480P & 720P
+I2V-A14B	Image-to-Video MoE model, supports 480P & 720P
+TI2V-5B	    High-compression VAE, T2V+I2V, supports 720P
+S2V-14B	    Speech-to-Video model, supports 480P & 720P
+Animate-14B	Character animation and replacement
+SAM2-hiera-large Video predictor for masking
+
+
 2. Download models:
 ```bash
-huggingface-cli download Wan-AI/Wan2.2-Animate-14B --local-dir /opt/huggingface/Wan2.2-Animate-14B
-huggingface-cli download facebook/sam2-hiera-large --local-dir /opt/huggingface/sam2-hiera-large
+hf download Wan-AI/Wan2.2-T2V-A14B --local-dir /opt/huggingface/Wan2.2-T2V-A14B
+hf download Wan-AI/Wan2.2-I2V-A14B --local-dir /opt/huggingface/Wan2.2-I2V-A14B
+hf download Wan-AI/Wan2.2-S2V-14B --local-dir /opt/huggingface/Wan2.2-S2V-14B
+hf download Wan-AI/Want2.2-TI2V-5B --local-dir /opt/huggingface/Wan2.2-TITV-5B	
+hf download Wan-AI/Wan2.2-Animate-14B --local-dir /opt/huggingface/Wan2.2-Animate-14B
+hf download facebook/sam2-hiera-large --local-dir /opt/huggingface/sam2-hiera-large
 ```
 
 ## Installation

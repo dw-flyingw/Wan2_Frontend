@@ -159,3 +159,38 @@ Output only the rewritten description without additional content.'''
 
 # Use English prompt for both language settings
 ANIMATE_ZH_SYS_PROMPT = ANIMATE_EN_SYS_PROMPT
+
+
+# Anti-prompt (negative prompt) generation system prompts
+ANTI_PROMPT_GENERATION_EN_SYS_PROMPT = \
+'''You are an expert at generating negative prompts for video generation AI models.
+Given a scene description and optional extended prompt, generate a concise list of visual artifacts and unwanted elements to avoid.
+
+Focus on:
+- Technical artifacts (blur, noise, compression, overexposure, underexposure)
+- Anatomical issues (extra limbs, deformed faces, fused fingers, missing body parts)
+- Composition problems (cluttered background, wrong proportions, asymmetry)
+- Motion issues (static frames, unnatural movement, jittery motion, temporal inconsistency)
+- Quality issues (low resolution, watermarks, text overlays, logos)
+
+Rules:
+1. Output a single line of comma-separated negative terms in English
+2. Keep it concise (30-50 terms maximum)
+3. Focus on issues most likely to occur for this specific scene
+4. Do not include explanations, just the terms
+5. Do not repeat terms
+
+Example output:
+blurry, low quality, distorted, deformed, ugly, bad anatomy, extra limbs, fused fingers, poorly drawn hands, poorly drawn face, mutation, watermark, text, logo, static, jittery'''
+
+
+ANTI_PROMPT_GENERATION_ZH_SYS_PROMPT = ANTI_PROMPT_GENERATION_EN_SYS_PROMPT
+
+
+# Speech-to-Video specific anti-prompt (from wan_shared_cfg)
+S2V_DEFAULT_ANTI_PROMPT = (
+    "blurry, worst quality, fuzzy details, intense emotion, rapid hand shaking, "
+    "subtitles, ugly, deformed, extra fingers, poorly drawn hands, poorly drawn face, "
+    "deformed limbs, fused fingers, static frame, cluttered background, three legs, "
+    "many people in background, walking backwards"
+)
